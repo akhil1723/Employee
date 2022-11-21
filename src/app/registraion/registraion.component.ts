@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./registraion.component.css']
 })
 export class RegistraionComponent implements OnInit {
+  userdf=""
+  userdl=""
+  userda=""
   withdrawForm = this.fb.group({
     userdf: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
     userdl: ['', [Validators.required, Validators.pattern('[a-zA-Z@#$0-9]+')]],
@@ -24,12 +27,15 @@ export class RegistraionComponent implements OnInit {
   ngOnInit(): void {
   }
   register(){
-    if(this.withdrawForm.valid)
+    localStorage.setItem('name',JSON.stringify(this.withdrawForm.value.userdf))
+        localStorage.setItem('phone',JSON.stringify(this.withdrawForm.value.userdp))
+        localStorage.setItem('address',JSON.stringify(this.withdrawForm.value.userda))
     this.router.navigateByUrl('/home')
+      }
+  
     else{
       alert("Please Enter the Details")
     }
-    
-
 }
+
 }
