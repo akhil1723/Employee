@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+user=""
+phone=""
+add=""
+  constructor() { 
+    if(localStorage.getItem('name')){
+      this.user = JSON.parse(localStorage.getItem('name') || '')
+      this.phone = JSON.parse(localStorage.getItem('phone') || '')
+      this.add = JSON.parse(localStorage.getItem('address') || '')
+     
+      }
+  }
 
   ngOnInit(): void {
   }
 
 }
+
